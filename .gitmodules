@@ -1,0 +1,12 @@
+[submodule "thirdparty/snappy"]
+	path = thirdparty/snappy
+	url = https://github.com/google/snappy
+[submodule "thirdparty/json"]
+	path = thirdparty/json
+	url = https://github.com/nlohmann/json
+[submodule "thirdparty/args"]
+	path = thirdparty/args
+	url = https://github.com/Taywee/args
+[submodule "thirdparty/googletest"]
+	path = thirdparty/googletest
+	url = https://github.com/google/googletest

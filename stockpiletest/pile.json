@@ -1,0 +1,13 @@
+{
+	"chunks":
+	[
+		{
+			"name": "testchunk",
+			"resources":
+			[
+				{ "file": "test.txt", "path": "testdata" },
+				{ "file": "test1.txt" }
+			]
+		}
+	]
+}
