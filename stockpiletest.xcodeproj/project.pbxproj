@@ -12,7 +12,7 @@
 		49A00E0B1F655ADF00C5B4BF /* test.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 49A00E081F655AC500C5B4BF /* test.txt */; };
 		49A00E0C1F655ADF00C5B4BF /* test1.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 49A00E091F655AC500C5B4BF /* test1.txt */; };
 		49A00E0D1F655ADF00C5B4BF /* test2.txt in CopyFiles */ = {isa = PBXBuildFile; fileRef = 49A00E0A1F655AC500C5B4BF /* test2.txt */; };
-		49A00E101F655AFA00C5B4BF /* CompressTest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A00E0E1F655AFA00C5B4BF /* CompressTest.cpp */; };
+		49A00E101F655AFA00C5B4BF /* Tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A00E0E1F655AFA00C5B4BF /* Tests.cpp */; };
 		49A00E131F65621300C5B4BF /* pile.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = 49A00E121F65620500C5B4BF /* pile.json */; };
 		49A00E161F657B3E00C5B4BF /* libsnappy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A00E151F657B3E00C5B4BF /* libsnappy.a */; };
 /* End PBXBuildFile section */
@@ -92,8 +92,8 @@
 		49A00E081F655AC500C5B4BF /* test.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = test.txt; path = stockpiletest/test.txt; sourceTree = "<group>"; };
 		49A00E091F655AC500C5B4BF /* test1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = test1.txt; path = stockpiletest/test1.txt; sourceTree = "<group>"; };
 		49A00E0A1F655AC500C5B4BF /* test2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = test2.txt; path = stockpiletest/test2.txt; sourceTree = "<group>"; };
-		49A00E0E1F655AFA00C5B4BF /* CompressTest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CompressTest.cpp; sourceTree = "<group>"; };
-		49A00E0F1F655AFA00C5B4BF /* CompressTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompressTest.h; sourceTree = "<group>"; };
+		49A00E0E1F655AFA00C5B4BF /* Tests.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tests.cpp; sourceTree = "<group>"; };
+		49A00E0F1F655AFA00C5B4BF /* Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tests.h; sourceTree = "<group>"; };
 		49A00E121F65620500C5B4BF /* pile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = pile.json; path = stockpiletest/pile.json; sourceTree = "<group>"; };
 		49A00E151F657B3E00C5B4BF /* libsnappy.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsnappy.a; path = thirdparty/snappy/build/libsnappy.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,8 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				49A00DE51F65597400C5B4BF /* main.cpp */,
-				49A00E0E1F655AFA00C5B4BF /* CompressTest.cpp */,
-				49A00E0F1F655AFA00C5B4BF /* CompressTest.h */,
+				49A00E0E1F655AFA00C5B4BF /* Tests.cpp */,
+				49A00E0F1F655AFA00C5B4BF /* Tests.h */,
 			);
 			path = stockpiletest;
 			sourceTree = "<group>";
@@ -289,7 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49A00DE61F65597400C5B4BF /* main.cpp in Sources */,
-				49A00E101F655AFA00C5B4BF /* CompressTest.cpp in Sources */,
+				49A00E101F655AFA00C5B4BF /* Tests.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

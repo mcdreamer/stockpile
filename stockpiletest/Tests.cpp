@@ -52,7 +52,7 @@ TEST(PileCreator,testCreatePile)
 }
 
 //--------------------------------------------------------
-TEST(PileCreator,testWritePile)
+TEST(PileReader,testWritePile)
 {
 	stockpile::PileDefinitionLoader loader;
 	auto pileDef = loader.loadFromFile("pile.json");
