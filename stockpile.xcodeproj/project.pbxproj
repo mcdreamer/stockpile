@@ -185,6 +185,7 @@
 					thirdparty/snappy/build,
 					thirdparty/json/src,
 					thirdparty/args,
+					thirdparty/PicoSHA2,
 				);
 				LIBRARY_SEARCH_PATHS = thirdparty/snappy/build;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
@@ -233,6 +234,7 @@
 					thirdparty/snappy/build,
 					thirdparty/json/src,
 					thirdparty/args,
+					thirdparty/PicoSHA2,
 				);
 				LIBRARY_SEARCH_PATHS = thirdparty/snappy/build;
 				MACOSX_DEPLOYMENT_TARGET = 10.12;

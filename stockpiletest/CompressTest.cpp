@@ -4,6 +4,7 @@
 
 #include "json.hpp"
 #include "snappy.h"
+#include "picosha2.h"
 
 #include <memory>
 
@@ -193,6 +194,63 @@ struct PileHeader
 };
 
 //--------------------------------------------------------
+PileHeader createHeader(const Pile& pile)
+{
+	PileHeader header;
+	
+	for (const auto& chunk : pile.getChunks())
+	{
+		header.components.push_back(PileHeader::Component { PileHeader::kChunkName, chunk.first.length() });
+		
+		for (const auto& resource : chunk.second.getResources())
+		{
+			header.components.push_back(PileHeader::Component { PileHeader::kResourceName, resource.first.toString().length() });
+			
+			header.components.push_back(PileHeader::Component { PileHeader::kResourceData, resource.second.getData().length() });
+		}
+	}
+	
+	return header;
+}
+
+//--------------------------------------------------------
+class PileHasher
+{
+public:
+	//--------------------------------------------------------
+	std::string getHash(const Pile& pile) const
+	{
+		picosha2::hash256_one_by_one hasher;
+		
+		const auto header = createHeader(pile);
+		for (const auto& pileComp : header.components)
+		{
+			std::array<char, sizeof(char) + sizeof(unsigned long) + 1> val;
+			val.fill(0);
+			val[0] = pileComp.type;
+			*(&val[1]) = pileComp.length;
+			hasher.process(val.begin(), val.end());
+		}
+		
+		for (const auto& chunk : pile.getChunks())
+		{
+			hasher.process(chunk.first.begin(), chunk.first.end());
+			
+			for (const auto& resource : chunk.second.getResources())
+			{
+				const auto resourcePath = resource.first.toString();
+				const auto& data = resource.second.getData();
+				
+				hasher.process(resourcePath.begin(), resourcePath.end());
+				hasher.process(data.begin(), data.end());
+			}
+		}
+		
+		return picosha2::get_hash_hex_string(hasher);
+	};
+};
+
+//--------------------------------------------------------
 class PileWriter
 {
 public:
@@ -220,27 +278,10 @@ public:
 			}
 		}
 		
-		output.close();
-	}
-	
-private:
-	PileHeader createHeader(const Pile& pile) const
-	{
-		PileHeader header;
-	
-		for (const auto& chunk : pile.getChunks())
-		{
-			header.components.push_back(PileHeader::Component { PileHeader::kChunkName, chunk.first.length() });
-			
-			for (const auto& resource : chunk.second.getResources())
-			{
-				header.components.push_back(PileHeader::Component { PileHeader::kResourceName, resource.first.toString().length() });
-				
-				header.components.push_back(PileHeader::Component { PileHeader::kResourceData, resource.second.getData().length() });
-			}
-		}
+		PileHasher pileHasher;
+		output << pileHasher.getHash(pile);
 		
-		return header;
+		output.close();
 	}
 };
 
@@ -253,6 +294,7 @@ class PileReader
 		std::map<ResourcePath, ResourceData> resources;
 		std::string chunkName;
 		std::string resourceName;
+		picosha2::hash256_one_by_one hasher;
 	};
 	
 public:
@@ -285,14 +327,18 @@ public:
 		}
 		
 		completeChunk(s);
-		
+
+		std::string fileHash;
+		input >> fileHash;
 		
 		input.close();
 		
+		const Pile pile(s.chunks);
 		
-		Pile pile(s.chunks);
+		PileHasher pileHasher;
+		const auto hash = pileHasher.getHash(pile);
+		
 		return pile;
-		
 	}
 	
 private:
@@ -370,4 +416,7 @@ TEST(PileCreator,testWritePile)
 	snappy::Uncompress(chunk.second.getResources().begin()->second.getData().data(), chunk.second.getResources().begin()->second.getData().size(), &reversed);
 	
 	EXPECT_EQ(std::string("More test data\n"), reversed);
+	
+	stockpile::PileHasher hasher;
+	EXPECT_EQ(hasher.getHash(pile), hasher.getHash(loadedPile));
 }

@@ -342,6 +342,7 @@
 					thirdparty/json/src,
 					thirdparty/snappy,
 					thirdparty/snappy/build,
+					thirdparty/PicoSHA2,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
@@ -390,6 +391,7 @@
 					thirdparty/json/src,
 					thirdparty/snappy,
 					thirdparty/snappy/build,
+					thirdparty/PicoSHA2,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
