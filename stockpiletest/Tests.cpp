@@ -1,4 +1,4 @@
-#include "CompressTest.h"
+#include "Tests.h"
 #include "gtest/gtest.h"
 #include "stockpile/stockpile.h"
 
