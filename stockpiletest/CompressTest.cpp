@@ -337,6 +337,10 @@ public:
 		
 		PileHasher pileHasher;
 		const auto hash = pileHasher.getHash(pile);
+		if (hash != fileHash)
+		{
+			return Pile({});
+		}
 		
 		return pile;
 	}
