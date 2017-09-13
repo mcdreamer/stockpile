@@ -252,8 +252,8 @@ struct PileHeader
 	
 	struct Component
 	{
-		char			type;
-		unsigned long	length;
+		std::uint8_t	type;
+		std::uint64_t	length;
 	};
 	
 	std::vector<Component> components;
@@ -289,13 +289,15 @@ public:
 		picosha2::hash256_one_by_one hasher;
 		
 		const auto header = createHeader(pile);
+		constexpr auto headerCompHashSize = sizeof(std::uint8_t) + sizeof(std::uint64_t) + 1;
+		static_assert(headerCompHashSize == 10, "Unexpected size of header component hash");
+		std::array<std::uint8_t, headerCompHashSize> headerCompHash;
 		for (const auto& pileComp : header.components)
 		{
-			std::array<char, sizeof(char) + sizeof(unsigned long) + 1> val;
-			val.fill(0);
-			val[0] = pileComp.type;
-			*(&val[1]) = pileComp.length;
-			hasher.process(val.begin(), val.end());
+			headerCompHash.fill(0);
+			headerCompHash[0] = pileComp.type;
+			*(&headerCompHash[1]) = pileComp.length;
+			hasher.process(headerCompHash.begin(), headerCompHash.end());
 		}
 		
 		for (const auto& chunk : pile.getChunks())
