@@ -1,9 +1,9 @@
 #include "Tests.h"
 #include "gtest/gtest.h"
 
-#include "stockpile/ResourcePath.h"
+#include "stockpile/include/stockpile.h"
+
 #include "stockpile/PileDefinition.h"
-#include "stockpile/Pile.h"
 #include "stockpile/PileDefinitionLoader.h"
 #include "stockpile/PileCreator.h"
 #include "stockpile/PileWriter.h"

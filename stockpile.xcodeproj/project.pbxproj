@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		49226A081F69BA1E0000B2B9 /* libstockpilelib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AC4B82E1F699743007D9374 /* libstockpilelib.a */; };
+		49226A0A1F69BCE00000B2B9 /* stockpile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49226A091F69BCE00000B2B9 /* stockpile.cpp */; };
 		49A00DAC1F64595000C5B4BF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A00DAB1F64595000C5B4BF /* main.cpp */; };
 		49A00DB71F645DD900C5B4BF /* libsnappy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A00DB61F645DD900C5B4BF /* libsnappy.a */; };
 		5AC4B8391F69974B007D9374 /* ResourcePath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AC4B81E1F69955F007D9374 /* ResourcePath.cpp */; };
@@ -40,16 +41,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		49226A091F69BCE00000B2B9 /* stockpile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stockpile.cpp; sourceTree = "<group>"; };
+		49226A0C1F69BD830000B2B9 /* stockpile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stockpile.h; sourceTree = "<group>"; };
+		49226A0D1F69BD830000B2B9 /* Pile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pile.h; sourceTree = "<group>"; };
+		49226A0E1F69BDB40000B2B9 /* ResourcePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourcePath.h; sourceTree = "<group>"; };
 		49A00DA81F64595000C5B4BF /* stockpile */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = stockpile; sourceTree = BUILT_PRODUCTS_DIR; };
 		49A00DAB1F64595000C5B4BF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		49A00DB61F645DD900C5B4BF /* libsnappy.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsnappy.a; path = thirdparty/snappy/build/libsnappy.a; sourceTree = "<group>"; };
-		49A00E111F655E6400C5B4BF /* stockpile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stockpile.h; sourceTree = "<group>"; };
 		5AC4B81E1F69955F007D9374 /* ResourcePath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResourcePath.cpp; sourceTree = "<group>"; };
-		5AC4B81F1F69955F007D9374 /* ResourcePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourcePath.h; sourceTree = "<group>"; };
 		5AC4B8211F6995DC007D9374 /* PileDefinition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PileDefinition.cpp; sourceTree = "<group>"; };
 		5AC4B8221F6995DC007D9374 /* PileDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PileDefinition.h; sourceTree = "<group>"; };
 		5AC4B8241F699628007D9374 /* Pile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pile.cpp; sourceTree = "<group>"; };
-		5AC4B8251F699628007D9374 /* Pile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pile.h; sourceTree = "<group>"; };
 		5AC4B8271F69966B007D9374 /* PileDefinitionLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PileDefinitionLoader.cpp; sourceTree = "<group>"; };
 		5AC4B8281F69966B007D9374 /* PileDefinitionLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PileDefinitionLoader.h; sourceTree = "<group>"; };
 		5AC4B82E1F699743007D9374 /* libstockpilelib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libstockpilelib.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +88,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49226A0B1F69BD370000B2B9 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				49226A0E1F69BDB40000B2B9 /* ResourcePath.h */,
+				49226A0C1F69BD830000B2B9 /* stockpile.h */,
+				49226A0D1F69BD830000B2B9 /* Pile.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
 		49A00D9F1F64595000C5B4BF = {
 			isa = PBXGroup;
 			children = (
@@ -107,14 +119,13 @@
 		49A00DAA1F64595000C5B4BF /* stockpile */ = {
 			isa = PBXGroup;
 			children = (
+				49226A0B1F69BD370000B2B9 /* include */,
 				49A00DAB1F64595000C5B4BF /* main.cpp */,
-				49A00E111F655E6400C5B4BF /* stockpile.h */,
+				49226A091F69BCE00000B2B9 /* stockpile.cpp */,
 				5AC4B81E1F69955F007D9374 /* ResourcePath.cpp */,
-				5AC4B81F1F69955F007D9374 /* ResourcePath.h */,
 				5AC4B8211F6995DC007D9374 /* PileDefinition.cpp */,
 				5AC4B8221F6995DC007D9374 /* PileDefinition.h */,
 				5AC4B8241F699628007D9374 /* Pile.cpp */,
-				5AC4B8251F699628007D9374 /* Pile.h */,
 				5AC4B8271F69966B007D9374 /* PileDefinitionLoader.cpp */,
 				5AC4B8281F69966B007D9374 /* PileDefinitionLoader.h */,
 				5AC4B8481F6997A2007D9374 /* PileCreator.cpp */,
@@ -249,6 +260,7 @@
 				5AC4B8551F699840007D9374 /* PileHasher.cpp in Sources */,
 				5AC4B83A1F69974B007D9374 /* PileDefinition.cpp in Sources */,
 				5AC4B84B1F6997A2007D9374 /* PileCreator.cpp in Sources */,
+				49226A0A1F69BCE00000B2B9 /* stockpile.cpp in Sources */,
 				5AC4B8641F699935007D9374 /* PileReader.cpp in Sources */,
 				5AC4B83C1F69974B007D9374 /* PileDefinitionLoader.cpp in Sources */,
 				5AC4B83B1F69974B007D9374 /* Pile.cpp in Sources */,

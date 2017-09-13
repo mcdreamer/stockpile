@@ -1,12 +1,5 @@
-#pragma once
-
-#include "PileDefinition.h"
-#include "Pile.h"
-#include "PileDefinitionLoader.h"
-#include "PileCreator.h"
+#include "stockpile.h"
 #include "PileReader.h"
-
-#include <string>
 
 namespace stockpile {
 
