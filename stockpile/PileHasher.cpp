@@ -27,19 +27,19 @@ std::string PileHasher::getHash(const Pile& pile) const
 		hasher.process(headerCompHash.begin(), headerCompHash.end());
 	}
 	
-	for (const auto& chunk : pile.getChunks())
+	pile.forEachChunk([&](const ResourcePath& chunkPath, const Chunk& chunk)
 	{
-		hasher.process(chunk.first.begin(), chunk.first.end());
+		const auto pathStr = chunkPath.toString();
+		hasher.process(pathStr.begin(), pathStr.end());
 		
-		for (const auto& resource : chunk.second.getResources())
+		chunk.forEachResource([&](const ResourcePath& resourcePath, const ResourceData& data)
 		{
-			const auto resourcePath = resource.first.toString();
-			const auto& data = resource.second.getData();
+			const auto resourcePathStr = resourcePath.toString();
 			
-			hasher.process(resourcePath.begin(), resourcePath.end());
-			hasher.process(data.begin(), data.end());
-		}
-	}
+			hasher.process(resourcePathStr.begin(), resourcePathStr.end());
+			hasher.process(data.getData().begin(), data.getData().end());
+		});
+	});
 	
 	return picosha2::get_hash_hex_string(hasher);
 };

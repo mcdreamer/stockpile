@@ -24,15 +24,15 @@ void PileWriter::writePile(const Pile& pile, const std::string& path) const
 		output << pileComp.type << pileComp.length;
 	}
 	
-	for (const auto& chunk : pile.getChunks())
+	pile.forEachChunk([&](const ResourcePath& chunkPath, const Chunk& chunk)
 	{
-		output << chunk.first;
+		output << chunkPath.toString();
 		
-		for (const auto& resource : chunk.second.getResources())
+		chunk.forEachResource([&](const ResourcePath& resourcePath, const ResourceData& data)
 		{
-			output << resource.first.toString() << resource.second.getData();
-		}
-	}
+			output << resourcePath.toString() << data.getData();
+		});
+	});
 	
 	PileHasher pileHasher;
 	output << pileHasher.getHash(pile);

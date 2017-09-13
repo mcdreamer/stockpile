@@ -3,7 +3,6 @@
 #include "ResourcePath.h"
 
 #include <string>
-#include <vector>
 #include <map>
 
 namespace stockpile {
@@ -19,10 +18,11 @@ public:
 	: m_Data(data)
 	{}
 	
-	const std::string&  getData() const { return m_Data; }
+	const std::string& getData() const { return m_Data; }
+	std::string getUncompressedData() const;
 	
 private:
-	std::string  m_Data;
+	std::string m_Data;
 };
 
 //--------------------------------------------------------
@@ -36,10 +36,20 @@ public:
 	: m_Resources(resources)
 	{}
 	
-	const std::map<ResourcePath, ResourceData>& getResources() const { return m_Resources; }
+	const ResourceData* getResource(const ResourcePath& path) const;
+	std::size_t resourceCount() const;
+	
+	template <typename TFunc>
+	void forEachResource(const TFunc& func) const
+	{
+		for (const auto& resource : m_Resources)
+		{
+			func(ResourcePath(resource.first), resource.second);
+		}
+	}
 	
 private:
-	std::map<ResourcePath, ResourceData>	m_Resources;
+	std::map<ResourcePath, ResourceData> m_Resources;
 };
 
 //--------------------------------------------------------
@@ -50,10 +60,21 @@ public:
 	: m_Chunks(chunks)
 	{}
 	
-	const std::map<std::string, Chunk>& getChunks() const { return m_Chunks; }
+	const Chunk* getChunk(const ResourcePath& chunkPath) const;
+	Chunk* getChunk(const ResourcePath& chunkPath);
+	std::size_t chunkCount() const;
+	
+	template <typename TFunc>
+	void forEachChunk(const TFunc& func) const
+	{
+		for (const auto& chunk : m_Chunks)
+		{
+			func(ResourcePath(chunk.first), chunk.second);
+		}
+	}
 	
 private:
-	std::map<std::string, Chunk>	m_Chunks;
+	std::map<std::string, Chunk> m_Chunks;
 };
 
 }

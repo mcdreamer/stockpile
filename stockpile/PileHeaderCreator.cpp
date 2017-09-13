@@ -9,17 +9,17 @@ PileHeader PileHeaderCreator::createHeader(const Pile& pile) const
 {
 	PileHeader header;
 	
-	for (const auto& chunk : pile.getChunks())
+	pile.forEachChunk([&](const ResourcePath& chunkPath, const Chunk& chunk)
 	{
-		header.components.push_back(PileHeader::Component { PileHeader::kChunkName, chunk.first.length() });
+		header.components.push_back(PileHeader::Component { PileHeader::kChunkName, chunkPath.toString().length() });
 		
-		for (const auto& resource : chunk.second.getResources())
+		chunk.forEachResource([&](const ResourcePath& resourcePath, const ResourceData& data)
 		{
-			header.components.push_back(PileHeader::Component { PileHeader::kResourceName, resource.first.toString().length() });
+			header.components.push_back(PileHeader::Component { PileHeader::kResourceName, resourcePath.toString().length() });
 			
-			header.components.push_back(PileHeader::Component { PileHeader::kResourceData, resource.second.getData().length() });
-		}
-	}
+			header.components.push_back(PileHeader::Component { PileHeader::kResourceData, data.getData().length() });
+		});
+	});
 	
 	return header;
 }
