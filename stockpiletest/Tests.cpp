@@ -2,6 +2,15 @@
 #include "gtest/gtest.h"
 #include "stockpile/stockpile.h"
 
+#include "stockpile/ResourcePath.h"
+#include "stockpile/PileDefinition.h"
+#include "stockpile/Pile.h"
+#include "stockpile/PileDefinitionLoader.h"
+#include "stockpile/PileCreator.h"
+#include "stockpile/PileWriter.h"
+#include "stockpile/PileReader.h"
+#include "stockpile/PileHasher.h"
+
 #include "snappy.h"
 
 #include <memory>

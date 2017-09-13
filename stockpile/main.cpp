@@ -1,9 +1,23 @@
 #include <iostream>
 
 #include "stockpile.h"
-#include "snappy.h"
-#include "json.hpp"
+#include "PileWriter.h"
+
 #include "args.hxx"
+
+namespace stockpile
+{
+	//-----------------------------------------------------------------
+	Pile createPileFromDefinitionFile(const std::string& definitionPath)
+	{
+		PileDefinitionLoader loader;
+		PileCreator creator;
+		
+		const auto pileDef = loader.loadFromFile(definitionPath);
+		
+		return creator.createPile(*pileDef);
+	}
+}
 
 //--------------------------------------------------------
 int main(int argc, const char * argv[])
@@ -11,9 +25,9 @@ int main(int argc, const char * argv[])
 	std::cout << "stockpile v0" << std::endl;
 	
 	args::ArgumentParser parser("stockpile", "This goes after the options.");
-	args::HelpFlag help(parser, "help", "Display this help menu", {'h', "help"});
-	args::ValueFlag<std::string> foo(parser, "integer", "The integer flag", {'f'});
-	args::ValueFlag<std::string> out(parser, "out", "The integer flag", {'o'});
+	args::HelpFlag help(parser, "help", "Display this help menu", { 'h', "help"} );
+	args::ValueFlag<std::string> input(parser, "input", "The integer flag", {'i', "input" });
+	args::ValueFlag<std::string> out(parser, "output", "The integer flag", {'o', "output" });
 	
 	try
 	{
@@ -23,52 +37,21 @@ int main(int argc, const char * argv[])
 	catch (args::Help)
 	{
 		std::cout << parser;
+		
 		return 0;
 	}
 	catch (args::ParseError e)
 	{
 		std::cerr << e.what() << std::endl;
 		std::cerr << parser;
+		
 		return 1;
 	}
 	
-	if (foo)
-	{
-		std::cerr << foo << std::endl;
-	}
+	const auto pile = stockpile::createPileFromDefinitionFile(input.Get());
 	
-	nlohmann::json j;
-	std::ifstream i(foo.Get());
-	i >> j;
-	
-	const auto file = j["file"].get<std::string>();
-	
-	std::ifstream i2(file, std::ios::binary | std::ios::ate);
-	auto pos = i2.tellg();
-	
-	std::vector<char>  result(pos);
-	
-	i2.seekg(0, std::ios::beg);
-	i2.read(&result[0], pos);
-	
-	std::string output;
-	
-	snappy::Compress(&result[0], result.size(), &output);
-
-	std::ofstream i3;
-	i3.open("/Users/andrew/src/stockpile/stockpile/stockpile/out.pile");
-	i3 << output;
-	i3.close();
-
-	std::cerr << std::string(result.begin(), result.end()) << std::endl;
-	std::cerr << output << std::endl;
-	
-	std::string reversed;
-	snappy::Uncompress(output.data(), output.size(), &reversed);
-	
-	std::cerr << reversed << std::endl;
-	
-
+	stockpile::PileWriter pileWriter;
+	pileWriter.writePile(pile, out.Get());
 	
 	return 0;
 }
