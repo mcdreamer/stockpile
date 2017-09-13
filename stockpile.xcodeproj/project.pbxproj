@@ -9,6 +9,33 @@
 /* Begin PBXBuildFile section */
 		49A00DAC1F64595000C5B4BF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A00DAB1F64595000C5B4BF /* main.cpp */; };
 		49A00DB71F645DD900C5B4BF /* libsnappy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A00DB61F645DD900C5B4BF /* libsnappy.a */; };
+		5AC4B8201F69955F007D9374 /* ResourcePath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AC4B81E1F69955F007D9374 /* ResourcePath.cpp */; };
+		5AC4B8231F6995DC007D9374 /* PileDefinition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AC4B8211F6995DC007D9374 /* PileDefinition.cpp */; };
+		5AC4B8261F699628007D9374 /* Pile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AC4B8241F699628007D9374 /* Pile.cpp */; };
+		5AC4B8291F69966B007D9374 /* PileDefinitionLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AC4B8271F69966B007D9374 /* PileDefinitionLoader.cpp */; };
+		5AC4B8311F699744007D9374 /* stockpilelib.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 5AC4B8301F699744007D9374 /* stockpilelib.hpp */; };
+		5AC4B8331F699744007D9374 /* stockpilelibPriv.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 5AC4B8321F699744007D9374 /* stockpilelibPriv.hpp */; };
+		5AC4B8351F699744007D9374 /* stockpilelib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AC4B8341F699744007D9374 /* stockpilelib.cpp */; };
+		5AC4B8391F69974B007D9374 /* ResourcePath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AC4B81E1F69955F007D9374 /* ResourcePath.cpp */; };
+		5AC4B83A1F69974B007D9374 /* PileDefinition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AC4B8211F6995DC007D9374 /* PileDefinition.cpp */; };
+		5AC4B83B1F69974B007D9374 /* Pile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AC4B8241F699628007D9374 /* Pile.cpp */; };
+		5AC4B83C1F69974B007D9374 /* PileDefinitionLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AC4B8271F69966B007D9374 /* PileDefinitionLoader.cpp */; };
+		5AC4B84A1F6997A2007D9374 /* PileCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AC4B8481F6997A2007D9374 /* PileCreator.cpp */; };
+		5AC4B84B1F6997A2007D9374 /* PileCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AC4B8481F6997A2007D9374 /* PileCreator.cpp */; };
+		5AC4B84C1F6997A2007D9374 /* PileCreator.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC4B8491F6997A2007D9374 /* PileCreator.h */; };
+		5AC4B8511F699819007D9374 /* PileHeader.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC4B84E1F699819007D9374 /* PileHeader.h */; };
+		5AC4B8541F699840007D9374 /* PileHasher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AC4B8521F699840007D9374 /* PileHasher.cpp */; };
+		5AC4B8551F699840007D9374 /* PileHasher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AC4B8521F699840007D9374 /* PileHasher.cpp */; };
+		5AC4B8561F699840007D9374 /* PileHasher.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC4B8531F699840007D9374 /* PileHasher.h */; };
+		5AC4B8591F6998C2007D9374 /* PileHeaderCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AC4B8571F6998C2007D9374 /* PileHeaderCreator.cpp */; };
+		5AC4B85A1F6998C2007D9374 /* PileHeaderCreator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AC4B8571F6998C2007D9374 /* PileHeaderCreator.cpp */; };
+		5AC4B85B1F6998C2007D9374 /* PileHeaderCreator.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC4B8581F6998C2007D9374 /* PileHeaderCreator.h */; };
+		5AC4B85E1F69992B007D9374 /* PileWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AC4B85C1F69992B007D9374 /* PileWriter.cpp */; };
+		5AC4B85F1F69992B007D9374 /* PileWriter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AC4B85C1F69992B007D9374 /* PileWriter.cpp */; };
+		5AC4B8601F69992B007D9374 /* PileWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC4B85D1F69992B007D9374 /* PileWriter.h */; };
+		5AC4B8631F699935007D9374 /* PileReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AC4B8611F699935007D9374 /* PileReader.cpp */; };
+		5AC4B8641F699935007D9374 /* PileReader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5AC4B8611F699935007D9374 /* PileReader.cpp */; };
+		5AC4B8651F699935007D9374 /* PileReader.h in Headers */ = {isa = PBXBuildFile; fileRef = 5AC4B8621F699935007D9374 /* PileReader.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +55,29 @@
 		49A00DAB1F64595000C5B4BF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		49A00DB61F645DD900C5B4BF /* libsnappy.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsnappy.a; path = thirdparty/snappy/build/libsnappy.a; sourceTree = "<group>"; };
 		49A00E111F655E6400C5B4BF /* stockpile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stockpile.h; sourceTree = "<group>"; };
+		5AC4B81E1F69955F007D9374 /* ResourcePath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ResourcePath.cpp; sourceTree = "<group>"; };
+		5AC4B81F1F69955F007D9374 /* ResourcePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourcePath.h; sourceTree = "<group>"; };
+		5AC4B8211F6995DC007D9374 /* PileDefinition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PileDefinition.cpp; sourceTree = "<group>"; };
+		5AC4B8221F6995DC007D9374 /* PileDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PileDefinition.h; sourceTree = "<group>"; };
+		5AC4B8241F699628007D9374 /* Pile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pile.cpp; sourceTree = "<group>"; };
+		5AC4B8251F699628007D9374 /* Pile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pile.h; sourceTree = "<group>"; };
+		5AC4B8271F69966B007D9374 /* PileDefinitionLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PileDefinitionLoader.cpp; sourceTree = "<group>"; };
+		5AC4B8281F69966B007D9374 /* PileDefinitionLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PileDefinitionLoader.h; sourceTree = "<group>"; };
+		5AC4B82E1F699743007D9374 /* libstockpilelib.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libstockpilelib.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		5AC4B8301F699744007D9374 /* stockpilelib.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = stockpilelib.hpp; sourceTree = "<group>"; };
+		5AC4B8321F699744007D9374 /* stockpilelibPriv.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = stockpilelibPriv.hpp; sourceTree = "<group>"; };
+		5AC4B8341F699744007D9374 /* stockpilelib.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = stockpilelib.cpp; sourceTree = "<group>"; };
+		5AC4B8481F6997A2007D9374 /* PileCreator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PileCreator.cpp; sourceTree = "<group>"; };
+		5AC4B8491F6997A2007D9374 /* PileCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PileCreator.h; sourceTree = "<group>"; };
+		5AC4B84E1F699819007D9374 /* PileHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PileHeader.h; sourceTree = "<group>"; };
+		5AC4B8521F699840007D9374 /* PileHasher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PileHasher.cpp; sourceTree = "<group>"; };
+		5AC4B8531F699840007D9374 /* PileHasher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PileHasher.h; sourceTree = "<group>"; };
+		5AC4B8571F6998C2007D9374 /* PileHeaderCreator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PileHeaderCreator.cpp; sourceTree = "<group>"; };
+		5AC4B8581F6998C2007D9374 /* PileHeaderCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PileHeaderCreator.h; sourceTree = "<group>"; };
+		5AC4B85C1F69992B007D9374 /* PileWriter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PileWriter.cpp; sourceTree = "<group>"; };
+		5AC4B85D1F69992B007D9374 /* PileWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PileWriter.h; sourceTree = "<group>"; };
+		5AC4B8611F699935007D9374 /* PileReader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PileReader.cpp; sourceTree = "<group>"; };
+		5AC4B8621F699935007D9374 /* PileReader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PileReader.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +89,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5AC4B82B1F699743007D9374 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -46,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				49A00DAA1F64595000C5B4BF /* stockpile */,
+				5AC4B82F1F699744007D9374 /* stockpilelib */,
 				49A00DA91F64595000C5B4BF /* Products */,
 				49A00DB51F645DD900C5B4BF /* Frameworks */,
 			);
@@ -55,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				49A00DA81F64595000C5B4BF /* stockpile */,
+				5AC4B82E1F699743007D9374 /* libstockpilelib.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -64,6 +123,25 @@
 			children = (
 				49A00DAB1F64595000C5B4BF /* main.cpp */,
 				49A00E111F655E6400C5B4BF /* stockpile.h */,
+				5AC4B81E1F69955F007D9374 /* ResourcePath.cpp */,
+				5AC4B81F1F69955F007D9374 /* ResourcePath.h */,
+				5AC4B8211F6995DC007D9374 /* PileDefinition.cpp */,
+				5AC4B8221F6995DC007D9374 /* PileDefinition.h */,
+				5AC4B8241F699628007D9374 /* Pile.cpp */,
+				5AC4B8251F699628007D9374 /* Pile.h */,
+				5AC4B8271F69966B007D9374 /* PileDefinitionLoader.cpp */,
+				5AC4B8281F69966B007D9374 /* PileDefinitionLoader.h */,
+				5AC4B8481F6997A2007D9374 /* PileCreator.cpp */,
+				5AC4B8491F6997A2007D9374 /* PileCreator.h */,
+				5AC4B84E1F699819007D9374 /* PileHeader.h */,
+				5AC4B8521F699840007D9374 /* PileHasher.cpp */,
+				5AC4B8531F699840007D9374 /* PileHasher.h */,
+				5AC4B8571F6998C2007D9374 /* PileHeaderCreator.cpp */,
+				5AC4B8581F6998C2007D9374 /* PileHeaderCreator.h */,
+				5AC4B85C1F69992B007D9374 /* PileWriter.cpp */,
+				5AC4B85D1F69992B007D9374 /* PileWriter.h */,
+				5AC4B8611F699935007D9374 /* PileReader.cpp */,
+				5AC4B8621F699935007D9374 /* PileReader.h */,
 			);
 			path = stockpile;
 			sourceTree = "<group>";
@@ -76,7 +154,35 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5AC4B82F1F699744007D9374 /* stockpilelib */ = {
+			isa = PBXGroup;
+			children = (
+				5AC4B8301F699744007D9374 /* stockpilelib.hpp */,
+				5AC4B8321F699744007D9374 /* stockpilelibPriv.hpp */,
+				5AC4B8341F699744007D9374 /* stockpilelib.cpp */,
+			);
+			path = stockpilelib;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		5AC4B82C1F699743007D9374 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AC4B8331F699744007D9374 /* stockpilelibPriv.hpp in Headers */,
+				5AC4B8651F699935007D9374 /* PileReader.h in Headers */,
+				5AC4B8561F699840007D9374 /* PileHasher.h in Headers */,
+				5AC4B8311F699744007D9374 /* stockpilelib.hpp in Headers */,
+				5AC4B84C1F6997A2007D9374 /* PileCreator.h in Headers */,
+				5AC4B8601F69992B007D9374 /* PileWriter.h in Headers */,
+				5AC4B85B1F6998C2007D9374 /* PileHeaderCreator.h in Headers */,
+				5AC4B8511F699819007D9374 /* PileHeader.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		49A00DA71F64595000C5B4BF /* stockpile */ = {
@@ -96,6 +202,23 @@
 			productReference = 49A00DA81F64595000C5B4BF /* stockpile */;
 			productType = "com.apple.product-type.tool";
 		};
+		5AC4B82D1F699743007D9374 /* stockpilelib */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5AC4B8361F699744007D9374 /* Build configuration list for PBXNativeTarget "stockpilelib" */;
+			buildPhases = (
+				5AC4B82A1F699743007D9374 /* Sources */,
+				5AC4B82B1F699743007D9374 /* Frameworks */,
+				5AC4B82C1F699743007D9374 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = stockpilelib;
+			productName = stockpilelib;
+			productReference = 5AC4B82E1F699743007D9374 /* libstockpilelib.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -107,6 +230,10 @@
 				TargetAttributes = {
 					49A00DA71F64595000C5B4BF = {
 						CreatedOnToolsVersion = 8.3.3;
+						ProvisioningStyle = Automatic;
+					};
+					5AC4B82D1F699743007D9374 = {
+						CreatedOnToolsVersion = 8.3;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -124,6 +251,7 @@
 			projectRoot = "";
 			targets = (
 				49A00DA71F64595000C5B4BF /* stockpile */,
+				5AC4B82D1F699743007D9374 /* stockpilelib */,
 			);
 		};
 /* End PBXProject section */
@@ -133,7 +261,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AC4B85E1F69992B007D9374 /* PileWriter.cpp in Sources */,
+				5AC4B8201F69955F007D9374 /* ResourcePath.cpp in Sources */,
+				5AC4B8591F6998C2007D9374 /* PileHeaderCreator.cpp in Sources */,
+				5AC4B8541F699840007D9374 /* PileHasher.cpp in Sources */,
+				5AC4B8231F6995DC007D9374 /* PileDefinition.cpp in Sources */,
+				5AC4B84A1F6997A2007D9374 /* PileCreator.cpp in Sources */,
+				5AC4B8631F699935007D9374 /* PileReader.cpp in Sources */,
 				49A00DAC1F64595000C5B4BF /* main.cpp in Sources */,
+				5AC4B8291F69966B007D9374 /* PileDefinitionLoader.cpp in Sources */,
+				5AC4B8261F699628007D9374 /* Pile.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5AC4B82A1F699743007D9374 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5AC4B85F1F69992B007D9374 /* PileWriter.cpp in Sources */,
+				5AC4B8391F69974B007D9374 /* ResourcePath.cpp in Sources */,
+				5AC4B85A1F6998C2007D9374 /* PileHeaderCreator.cpp in Sources */,
+				5AC4B8551F699840007D9374 /* PileHasher.cpp in Sources */,
+				5AC4B83A1F69974B007D9374 /* PileDefinition.cpp in Sources */,
+				5AC4B84B1F6997A2007D9374 /* PileCreator.cpp in Sources */,
+				5AC4B8641F699935007D9374 /* PileReader.cpp in Sources */,
+				5AC4B8351F699744007D9374 /* stockpilelib.cpp in Sources */,
+				5AC4B83C1F69974B007D9374 /* PileDefinitionLoader.cpp in Sources */,
+				5AC4B83B1F69974B007D9374 /* Pile.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +419,30 @@
 			};
 			name = Release;
 		};
+		5AC4B8371F699744007D9374 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5AC4B8381F699744007D9374 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				EXECUTABLE_PREFIX = lib;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_ENABLE_CPP_RTTI = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -282,6 +460,15 @@
 			buildConfigurations = (
 				49A00DB01F64595000C5B4BF /* Debug */,
 				49A00DB11F64595000C5B4BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5AC4B8361F699744007D9374 /* Build configuration list for PBXNativeTarget "stockpilelib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5AC4B8371F699744007D9374 /* Debug */,
+				5AC4B8381F699744007D9374 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

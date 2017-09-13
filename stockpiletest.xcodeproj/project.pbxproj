@@ -15,6 +15,7 @@
 		49A00E101F655AFA00C5B4BF /* Tests.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 49A00E0E1F655AFA00C5B4BF /* Tests.cpp */; };
 		49A00E131F65621300C5B4BF /* pile.json in CopyFiles */ = {isa = PBXBuildFile; fileRef = 49A00E121F65620500C5B4BF /* pile.json */; };
 		49A00E161F657B3E00C5B4BF /* libsnappy.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 49A00E151F657B3E00C5B4BF /* libsnappy.a */; };
+		5AC4B83E1F699756007D9374 /* libstockpilelib.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AC4B83D1F699756007D9374 /* libstockpilelib.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		49A00E0F1F655AFA00C5B4BF /* Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tests.h; sourceTree = "<group>"; };
 		49A00E121F65620500C5B4BF /* pile.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = pile.json; path = stockpiletest/pile.json; sourceTree = "<group>"; };
 		49A00E151F657B3E00C5B4BF /* libsnappy.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libsnappy.a; path = thirdparty/snappy/build/libsnappy.a; sourceTree = "<group>"; };
+		5AC4B83D1F699756007D9374 /* libstockpilelib.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libstockpilelib.a; path = build/Debug/libstockpilelib.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5AC4B83E1F699756007D9374 /* libstockpilelib.a in Frameworks */,
 				49A00E161F657B3E00C5B4BF /* libsnappy.a in Frameworks */,
 				49A00E061F655A4A00C5B4BF /* libgtest.a in Frameworks */,
 			);
@@ -168,6 +171,7 @@
 		49A00E141F657B3D00C5B4BF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5AC4B83D1F699756007D9374 /* libstockpilelib.a */,
 				49A00E151F657B3E00C5B4BF /* libsnappy.a */,
 			);
 			name = Frameworks;
@@ -405,6 +409,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/thirdparty/snappy/build",
+					"$(PROJECT_DIR)/build/Debug",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -416,6 +421,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/thirdparty/snappy/build",
+					"$(PROJECT_DIR)/build/Debug",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
