@@ -22,22 +22,19 @@ namespace stockpile
 //--------------------------------------------------------
 int main(int argc, const char * argv[])
 {
-	std::cout << "stockpile v0" << std::endl;
-	
-	args::ArgumentParser parser("stockpile", "This goes after the options.");
+	args::ArgumentParser parser("", "");
 	args::HelpFlag help(parser, "help", "Display this help menu", { 'h', "help"} );
 	args::ValueFlag<std::string> input(parser, "input", "The integer flag", {'i', "input" });
-	args::ValueFlag<std::string> out(parser, "output", "The integer flag", {'o', "output" });
+	args::ValueFlag<std::string> output(parser, "output", "The integer flag", {'o', "output" });
 	
 	try
 	{
 		parser.ParseCLI(argc, argv);
-		
 	}
 	catch (args::Help)
 	{
 		std::cout << parser;
-		
+
 		return 0;
 	}
 	catch (args::ParseError e)
@@ -48,10 +45,17 @@ int main(int argc, const char * argv[])
 		return 1;
 	}
 	
-	const auto pile = stockpile::createPileFromDefinitionFile(input.Get());
-	
-	stockpile::PileWriter pileWriter;
-	pileWriter.writePile(pile, out.Get());
+	if (input && output)
+	{
+		const auto pile = stockpile::createPileFromDefinitionFile(input.Get());
+		
+		stockpile::PileWriter pileWriter;
+		pileWriter.writePile(pile, output.Get());
+	}
+	else
+	{
+		std::cout << parser;
+	}
 	
 	return 0;
 }

@@ -1,6 +1,5 @@
 #include "Tests.h"
 #include "gtest/gtest.h"
-#include "stockpile/stockpile.h"
 
 #include "stockpile/ResourcePath.h"
 #include "stockpile/PileDefinition.h"
