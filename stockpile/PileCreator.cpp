@@ -1,8 +1,6 @@
 #include "PileCreator.h"
 #include "PileDefinition.h"
-#include "Pile.h"
-
-#include "snappy.h"
+#include "pile.h"
 
 #include <map>
 #include <fstream>
@@ -12,11 +10,11 @@ namespace stockpile {
 //--------------------------------------------------------
 Pile PileCreator::createPile(const PileDefinition& pileDef) const
 {
-	std::map<std::string, Chunk> chunks;
+	std::map<ResourcePath, Chunk> chunks;
 	
 	for (const auto& chunkDef : pileDef.getChunkDefinitions())
 	{
-		std::map<ResourcePath, ResourceData> resources;
+		std::map<ResourcePath, std::string> resources;
 		
 		for (const auto& resourceDef : chunkDef.getResourcesDefinitions())
 		{
@@ -32,13 +30,10 @@ Pile PileCreator::createPile(const PileDefinition& pileDef) const
 			input.seekg(0, std::ios::beg);
 			input.read(&inputData[0], inputLength);
 			
-			std::string resourceData;
-			snappy::Compress(&inputData[0], inputData.size(), &resourceData);
-			
-			resources[resourceDef.getTargetPath()] = ResourceData(resourceData);
+			resources[resourceDef.getTargetPath()] = std::string(inputData.begin(), inputData.end());
 		}
 		
-		chunks[chunkDef.getChunkName()] = Chunk(resources);
+		chunks[ResourcePath(chunkDef.getChunkName())] = Chunk(resources);
 	}
 	
 	Pile pile(chunks);

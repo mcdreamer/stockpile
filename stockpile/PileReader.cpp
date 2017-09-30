@@ -1,7 +1,9 @@
 #include "PileReader.h"
-#include "Pile.h"
+#include "pile.h"
 #include "PileHeader.h"
 #include "PileHasher.h"
+
+#include "snappy.h"
 
 #include <fstream>
 
@@ -12,8 +14,8 @@ namespace
 	//-----------------------------------------------------------------
 	struct State
 	{
-		std::map<std::string, Chunk> chunks;
-		std::map<ResourcePath, ResourceData> resources;
+		std::map<ResourcePath, Chunk> chunks;
+		std::map<ResourcePath, std::string> resources;
 		std::string chunkName;
 		std::string resourceName;
 	};
@@ -54,12 +56,11 @@ namespace
 	{
 		if (!s.chunkName.empty() && !s.resources.empty())
 		{
-			s.chunks[s.chunkName] = Chunk(s.resources);
+			s.chunks[ResourcePath(s.chunkName)] = Chunk(s.resources);
 		}
 		
 		s.resources.clear();
 	}
-
 }
 
 //--------------------------------------------------------
@@ -86,12 +87,16 @@ Pile PileReader::readPile(const std::string& path) const
 		}
 		else if (pileComp.type == PileHeader::kResourceData)
 		{
-			s.resources[ResourcePath(s.resourceName)] = readData(pileComp, input);
+			const auto data = readData(pileComp, input);
+			std::string uncompressed;
+			snappy::Uncompress(data.data(), data.size(), &uncompressed);
+	
+			s.resources[ResourcePath(s.resourceName)] = uncompressed;
 		}
 	}
 	
 	completeChunk(s);
-	
+
 	std::string fileHash;
 	input >> fileHash;
 	
@@ -103,7 +108,7 @@ Pile PileReader::readPile(const std::string& path) const
 	const auto hash = pileHasher.getHash(pile);
 	if (hash != fileHash)
 	{
-		return Pile({});
+		return {};
 	}
 	
 	return pile;

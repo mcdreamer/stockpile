@@ -48,10 +48,9 @@ TEST(PileCreator,testCreatePile)
 	ASSERT_TRUE(chunk);
 	EXPECT_EQ((size_t)2, chunk->resourceCount());
 	
-	const auto* data = chunk->getResource(stockpile::ResourcePath("test1.txt"));
-	ASSERT_TRUE(data);
-	EXPECT_NE(std::string("More test data\n"), data->getData());
-	EXPECT_EQ(std::string("More test data\n"), data->getUncompressedData());
+	const auto data = chunk->getResource(stockpile::ResourcePath("test1.txt"));
+	EXPECT_FALSE(data.empty());
+	EXPECT_EQ(std::string("More test data\n"), data.getData());
 }
 
 //--------------------------------------------------------
@@ -76,10 +75,9 @@ TEST(PileReader,testWritePile)
 	ASSERT_TRUE(chunk);
 	EXPECT_EQ((size_t)2, chunk->resourceCount());
 
-	const auto* data = chunk->getResource(stockpile::ResourcePath("test1.txt"));
-	ASSERT_TRUE(data);
-	EXPECT_NE(std::string("More test data\n"), data->getData());
-	EXPECT_EQ(std::string("More test data\n"), data->getUncompressedData());
+	const auto data = chunk->getResource(stockpile::ResourcePath("test1.txt"));
+	EXPECT_FALSE(data.empty());
+	EXPECT_EQ(std::string("More test data\n"), data.getData());
 	
 	stockpile::PileHasher hasher;
 	EXPECT_EQ(hasher.getHash(pile), hasher.getHash(loadedPile));

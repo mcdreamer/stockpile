@@ -1,6 +1,6 @@
 #pragma once
 
-#include "include/ResourcePath.h"
+#include "include/resourcepath.h"
 
 #include <string>
 #include <vector>

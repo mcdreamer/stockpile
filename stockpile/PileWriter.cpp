@@ -1,8 +1,10 @@
 #include "PileWriter.h"
-#include "Pile.h"
+#include "pile.h"
 #include "PileHasher.h"
 #include "PileHeaderCreator.h"
 #include "PileHeader.h"
+
+#include "snappy.h"
 
 #include <fstream>
 
@@ -11,6 +13,9 @@ namespace stockpile {
 //--------------------------------------------------------
 void PileWriter::writePile(const Pile& pile, const std::string& path) const
 {
+	PileHasher pileHasher;
+	const auto pileHash = pileHasher.getHash(pile);
+
 	PileHeaderCreator headerCreator;
 	const auto header = headerCreator.createHeader(pile);
 	
@@ -30,12 +35,14 @@ void PileWriter::writePile(const Pile& pile, const std::string& path) const
 		
 		chunk.forEachResource([&](const ResourcePath& resourcePath, const ResourceData& data)
 		{
-			output << resourcePath.toString() << data.getData();
+			std::string resourceData;
+			snappy::Compress(&data.getData()[0], data.getData().size(), &resourceData);
+		
+			output << resourcePath.toString() << resourceData;
 		});
 	});
 	
-	PileHasher pileHasher;
-	output << pileHasher.getHash(pile);
+	output << pileHash;
 	
 	output.close();
 }

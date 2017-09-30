@@ -1,6 +1,8 @@
 #include "PileHeaderCreator.h"
-#include "Pile.h"
+#include "pile.h"
 #include "PileHeader.h"
+
+#include "snappy.h"
 
 namespace stockpile {
 
@@ -17,7 +19,11 @@ PileHeader PileHeaderCreator::createHeader(const Pile& pile) const
 		{
 			header.components.push_back(PileHeader::Component { PileHeader::kResourceName, resourcePath.toString().length() });
 			
-			header.components.push_back(PileHeader::Component { PileHeader::kResourceData, data.getData().length() });
+			// Improve this
+			std::string compressedData;
+			snappy::Compress(&data.getData()[0], data.getData().size(), &compressedData);
+			
+			header.components.push_back(PileHeader::Component { PileHeader::kResourceData, compressedData.length() });
 		});
 	});
 	

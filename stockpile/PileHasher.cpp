@@ -1,5 +1,5 @@
 #include "PileHasher.h"
-#include "Pile.h"
+#include "pile.h"
 #include "PileHeaderCreator.h"
 #include "PileHeader.h"
 
