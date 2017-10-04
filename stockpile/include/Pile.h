@@ -7,6 +7,7 @@
 #include <map>
 #include <memory>
 #include <functional>
+#include <vector>
 
 namespace stockpile {
 
@@ -37,8 +38,8 @@ public:
 	Chunk()
 	{}
 	
-	Chunk(const std::map<ResourcePath, std::string>& resources)
-	: m_Resources(resources)
+	Chunk(const std::vector<std::pair<ResourcePath, std::pair<int, int>>>& resources, const std::string& data)
+	: m_Resources(resources), m_Data(data)
 	{}
 	
 	ResourceData getResource(const ResourcePath& path) const;
@@ -46,7 +47,8 @@ public:
 	void forEachResource(const VisitResourceFunc& func) const;
 	
 private:
-	std::map<ResourcePath, std::string> m_Resources;
+	std::vector<std::pair<ResourcePath, std::pair<int, int>>> m_Resources;
+	std::string	m_Data;
 };
 
 //--------------------------------------------------------

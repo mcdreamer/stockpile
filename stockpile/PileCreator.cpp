@@ -4,6 +4,7 @@
 
 #include <map>
 #include <fstream>
+#include <sstream>
 
 namespace stockpile {
 
@@ -14,7 +15,9 @@ Pile PileCreator::createPile(const PileDefinition& pileDef) const
 	
 	for (const auto& chunkDef : pileDef.getChunkDefinitions())
 	{
-		std::map<ResourcePath, std::string> resources;
+		std::stringstream ss;
+		std::vector<std::pair<ResourcePath, std::pair<int, int>>> resources;
+		int pos = 0;
 		
 		for (const auto& resourceDef : chunkDef.getResourcesDefinitions())
 		{
@@ -30,10 +33,15 @@ Pile PileCreator::createPile(const PileDefinition& pileDef) const
 			input.seekg(0, std::ios::beg);
 			input.read(&inputData[0], inputLength);
 			
-			resources[resourceDef.getTargetPath()] = std::string(inputData.begin(), inputData.end());
+			const std::string s(inputData.begin(), inputData.end());
+			ss << s;
+			
+			resources.emplace_back(resourceDef.getTargetPath(), std::make_pair(pos, (int)s.size()));
+			
+			pos += s.size();
 		}
 		
-		chunks[ResourcePath(chunkDef.getChunkName())] = Chunk(resources);
+		chunks[ResourcePath(chunkDef.getChunkName())] = Chunk(resources, ss.str());
 	}
 	
 	Pile pile(chunks);

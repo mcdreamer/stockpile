@@ -6,6 +6,7 @@
 #include "snappy.h"
 
 #include <fstream>
+#include <sstream>
 
 namespace stockpile {
 
@@ -15,7 +16,7 @@ namespace
 	struct State
 	{
 		std::map<ResourcePath, Chunk> chunks;
-		std::map<ResourcePath, std::string> resources;
+		std::vector<std::pair<ResourcePath, std::string>> resources;
 		std::string chunkName;
 		std::string resourceName;
 	};
@@ -56,7 +57,19 @@ namespace
 	{
 		if (!s.chunkName.empty() && !s.resources.empty())
 		{
-			s.chunks[ResourcePath(s.chunkName)] = Chunk(s.resources);
+			std::stringstream ss;
+			std::vector<std::pair<ResourcePath, std::pair<int, int>>> resources;
+			int pos = 0;
+			
+			for (const auto& resource : s.resources)
+			{
+				resources.emplace_back(resource.first, std::make_pair(pos, (int)resource.second.size()));
+				ss << resource.second;
+				
+				pos += resource.second.size();
+			}
+		
+			s.chunks[ResourcePath(s.chunkName)] = Chunk(resources, ss.str());
 		}
 		
 		s.resources.clear();
@@ -91,7 +104,7 @@ Pile PileReader::readPile(const std::string& path) const
 			std::string uncompressed;
 			snappy::Uncompress(data.data(), data.size(), &uncompressed);
 	
-			s.resources[ResourcePath(s.resourceName)] = uncompressed;
+			s.resources.emplace_back(ResourcePath(s.resourceName), uncompressed);
 		}
 	}
 	

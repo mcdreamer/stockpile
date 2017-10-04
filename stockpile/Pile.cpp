@@ -5,8 +5,8 @@ namespace stockpile {
 //--------------------------------------------------------
 ResourceData Chunk::getResource(const ResourcePath& path) const
 {
-	auto it = m_Resources.find(path);
-	return it != m_Resources.end() ? std::string_view(&it->second[0], it->second.size()) : ResourceData();
+	auto it = std::find_if(m_Resources.begin(), m_Resources.end(), [&](const auto r) { return r.first == path; });
+	return it != m_Resources.end() ? std::string_view(&m_Data[it->second.first], it->second.second) : ResourceData();
 }
 
 //--------------------------------------------------------
@@ -20,7 +20,7 @@ void Chunk::forEachResource(const VisitResourceFunc& func) const
 {
 	for (const auto& resource : m_Resources)
 	{
-		func(resource.first, std::string_view(&resource.second[0], resource.second.size()));
+		func(resource.first, std::string_view(&m_Data[resource.second.first], resource.second.second));
 	}
 }
 
