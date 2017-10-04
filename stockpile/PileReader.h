@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <memory>
 
 namespace stockpile {
 
@@ -10,7 +11,7 @@ class Pile;
 class PileReader
 {
 public:
-	Pile readPile(const std::string& path) const;
+	std::unique_ptr<Pile> readPile(const std::string& path) const;
 };
 
 }

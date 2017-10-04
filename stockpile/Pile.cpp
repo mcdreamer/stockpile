@@ -3,24 +3,33 @@
 namespace stockpile {
 
 //--------------------------------------------------------
+Chunk::Chunk(std::unique_ptr<ChunkData>& data)
+: m_Data(data.release())
+{}
+
+//--------------------------------------------------------
+Chunk::~Chunk()
+{}
+
+//--------------------------------------------------------
 ResourceData Chunk::getResource(const ResourcePath& path) const
 {
-	auto it = std::find_if(m_Resources.begin(), m_Resources.end(), [&](const auto r) { return r.first == path; });
-	return it != m_Resources.end() ? std::string_view(&m_Data[it->second.first], it->second.second) : ResourceData();
+	auto it = std::find_if(m_Data->resources.begin(), m_Data->resources.end(), [&](const auto& a) { return a.path == path; });
+	return it != m_Data->resources.end() ? std::string_view(&m_Data->data[it->startPos], it->length) : ResourceData();
 }
 
 //--------------------------------------------------------
 std::size_t Chunk::resourceCount() const
 {
-	return m_Resources.size();
+	return m_Data->resources.size();
 }
 
 //--------------------------------------------------------
 void Chunk::forEachResource(const VisitResourceFunc& func) const
 {
-	for (const auto& resource : m_Resources)
+	for (const auto& resource : m_Data->resources)
 	{
-		func(resource.first, std::string_view(&m_Data[resource.second.first], resource.second.second));
+		func(resource.path, std::string_view(&m_Data->data[resource.startPos], resource.length));
 	}
 }
 
@@ -31,34 +40,43 @@ namespace
 	auto* getChunkInternal(TChunkMap& chunkMap, const ResourcePath& chunkPath)
 	{
 		auto it = chunkMap.find(chunkPath);
-		return it != chunkMap.end() ? &it->second : nullptr;
+		return it != chunkMap.end() ? it->second.get() : nullptr;
 	}
 }
 
 //--------------------------------------------------------
+Pile::Pile(std::unique_ptr<PileData>& data)
+: m_Data(data.release())
+{}
+
+//--------------------------------------------------------
+Pile::~Pile()
+{}
+
+//--------------------------------------------------------
 const Chunk* Pile::getChunk(const ResourcePath& chunkPath) const
 {
-	return getChunkInternal(m_Chunks, chunkPath);
+	return getChunkInternal(m_Data->chunks, chunkPath);
 }
 	
 //--------------------------------------------------------
 Chunk* Pile::getChunk(const ResourcePath& chunkPath)
 {
-	return getChunkInternal(m_Chunks, chunkPath);
+	return getChunkInternal(m_Data->chunks, chunkPath);
 }
 
 //--------------------------------------------------------
 std::size_t Pile::chunkCount() const
 {
-	return m_Chunks.size();
+	return m_Data->chunks.size();
 }
 
 //--------------------------------------------------------
 void Pile::forEachChunk(const VisitChunkFunc& func) const
 {
-	for (const auto& chunk : m_Chunks)
+	for (const auto& chunk : m_Data->chunks)
 	{
-		func(chunk.first, chunk.second);
+		func(chunk.first, *chunk.second);
 	}
 }
 

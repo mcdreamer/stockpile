@@ -4,9 +4,9 @@
 namespace stockpile {
 
 //-----------------------------------------------------------------
-Pile loadPile(const std::string& pilePath)
+std::unique_ptr<Pile> loadPile(const std::string& pilePath)
 {
-	stockpile::PileReader reader;
+	PileReader reader;
 	return reader.readPile(pilePath);
 }
 

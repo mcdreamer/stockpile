@@ -15,8 +15,15 @@ namespace
 	//-----------------------------------------------------------------
 	struct State
 	{
-		std::map<ResourcePath, Chunk> chunks;
-		std::vector<std::pair<ResourcePath, std::string>> resources;
+		State()
+		: pileData(new PileData),
+		chunkData(new ChunkData),
+		pos(0)
+		{}
+	
+		std::unique_ptr<PileData> pileData;
+		std::unique_ptr<ChunkData> chunkData;
+		int pos;
 		std::string chunkName;
 		std::string resourceName;
 	};
@@ -55,43 +62,32 @@ namespace
 	//--------------------------------------------------------
 	void completeChunk(State& s)
 	{
-		if (!s.chunkName.empty() && !s.resources.empty())
+		if (!s.chunkName.empty() && !s.chunkData->resources.empty())
 		{
-			std::stringstream ss;
-			std::vector<std::pair<ResourcePath, std::pair<int, int>>> resources;
-			int pos = 0;
-			
-			for (const auto& resource : s.resources)
-			{
-				resources.emplace_back(resource.first, std::make_pair(pos, (int)resource.second.size()));
-				ss << resource.second;
-				
-				pos += resource.second.size();
-			}
-		
-			s.chunks[ResourcePath(s.chunkName)] = Chunk(resources, ss.str());
+			s.pileData->chunks[ResourcePath(s.chunkName)].reset(new Chunk(s.chunkData));
 		}
 		
-		s.resources.clear();
+		s.chunkData.reset(new ChunkData);
+		s.pos = 0;
 	}
 }
 
 //--------------------------------------------------------
-Pile PileReader::readPile(const std::string& path) const
+std::unique_ptr<Pile> PileReader::readPile(const std::string& path) const
 {
 	std::ifstream input;
 	input.open(path);
-	
+
 	const auto header = readHeader(input);
-	
+
 	State s;
-	
+
 	for (const auto& pileComp : header.components)
 	{
 		if (pileComp.type == PileHeader::kChunkName)
 		{
 			completeChunk(s);
-			
+
 			s.chunkName = readData(pileComp, input);
 		}
 		else if (pileComp.type == PileHeader::kResourceName)
@@ -103,27 +99,30 @@ Pile PileReader::readPile(const std::string& path) const
 			const auto data = readData(pileComp, input);
 			std::string uncompressed;
 			snappy::Uncompress(data.data(), data.size(), &uncompressed);
-	
-			s.resources.emplace_back(ResourcePath(s.resourceName), uncompressed);
+
+			s.chunkData->resources.emplace_back(ResourcePath(s.resourceName), s.pos, (int)uncompressed.size());
+			s.chunkData->data += uncompressed;
+
+			s.pos += (int)uncompressed.size();
 		}
 	}
-	
+
 	completeChunk(s);
 
 	std::string fileHash;
 	input >> fileHash;
-	
+
 	input.close();
-	
-	const Pile pile(s.chunks);
-	
+
+	std::unique_ptr<Pile> pile(new Pile(s.pileData));
+
 	PileHasher pileHasher;
-	const auto hash = pileHasher.getHash(pile);
+	const auto hash = pileHasher.getHash(*pile);
 	if (hash != fileHash)
 	{
 		return {};
 	}
-	
+
 	return pile;
 }
 

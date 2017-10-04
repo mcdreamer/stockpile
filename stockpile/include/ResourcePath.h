@@ -8,6 +8,9 @@ namespace stockpile {
 class ResourcePath
 {
 public:
+	ResourcePath()
+	{}
+	
 	explicit ResourcePath(const std::string& path)
 	: m_Path(path)
 	{}

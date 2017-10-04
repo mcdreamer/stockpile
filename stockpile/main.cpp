@@ -2,6 +2,9 @@
 
 #include "stockpile.h"
 #include "PileWriter.h"
+#include "PileDefinitionLoader.h"
+#include "PileDefinition.h"
+#include "PileCreator.h"
 
 #include "args.hxx"
 

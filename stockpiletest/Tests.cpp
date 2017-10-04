@@ -69,9 +69,10 @@ TEST(PileReader,testWritePile)
 	stockpile::PileReader reader;
 	const auto loadedPile = reader.readPile("test.pile");
 	
-	ASSERT_EQ((size_t)1, loadedPile.chunkCount());
+	ASSERT_TRUE(loadedPile != nullptr);
+	ASSERT_EQ((size_t)1, loadedPile->chunkCount());
 	
-	const auto* chunk = loadedPile.getChunk(stockpile::ResourcePath("testchunk"));
+	const auto* chunk = loadedPile->getChunk(stockpile::ResourcePath("testchunk"));
 	ASSERT_TRUE(chunk);
 	EXPECT_EQ((size_t)2, chunk->resourceCount());
 
@@ -80,5 +81,5 @@ TEST(PileReader,testWritePile)
 	EXPECT_EQ(std::string("More test data\n"), data.getData());
 	
 	stockpile::PileHasher hasher;
-	EXPECT_EQ(hasher.getHash(pile), hasher.getHash(loadedPile));
+	EXPECT_EQ(hasher.getHash(pile), hasher.getHash(*loadedPile));
 }

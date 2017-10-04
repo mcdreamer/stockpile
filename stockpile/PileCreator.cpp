@@ -11,13 +11,14 @@ namespace stockpile {
 //--------------------------------------------------------
 Pile PileCreator::createPile(const PileDefinition& pileDef) const
 {
-	std::map<ResourcePath, Chunk> chunks;
+	std::unique_ptr<PileData> pileData(new PileData);
 	
 	for (const auto& chunkDef : pileDef.getChunkDefinitions())
 	{
 		std::stringstream ss;
-		std::vector<std::pair<ResourcePath, std::pair<int, int>>> resources;
 		int pos = 0;
+		
+		std::unique_ptr<ChunkData> chunkData(new ChunkData);
 		
 		for (const auto& resourceDef : chunkDef.getResourcesDefinitions())
 		{
@@ -36,16 +37,17 @@ Pile PileCreator::createPile(const PileDefinition& pileDef) const
 			const std::string s(inputData.begin(), inputData.end());
 			ss << s;
 			
-			resources.emplace_back(resourceDef.getTargetPath(), std::make_pair(pos, (int)s.size()));
+			chunkData->resources.emplace_back(resourceDef.getTargetPath(), pos, (int)s.size());
 			
 			pos += s.size();
 		}
 		
-		chunks[ResourcePath(chunkDef.getChunkName())] = Chunk(resources, ss.str());
+		chunkData->data = ss.str();
+		
+		pileData->chunks[ResourcePath(chunkDef.getChunkName())].reset(new Chunk(chunkData));
 	}
 	
-	Pile pile(chunks);
-	return pile;
+	return Pile(pileData);
 }
 
 }
