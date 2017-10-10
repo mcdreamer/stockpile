@@ -1,10 +1,10 @@
 #include <iostream>
 
 #include "stockpile.h"
-#include "PileWriter.h"
-#include "PileDefinitionLoader.h"
-#include "PileDefinition.h"
-#include "PileCreator.h"
+#include "pilewriter.h"
+#include "piledefinitionLoader.h"
+#include "piledefinition.h"
+#include "pilecreator.h"
 
 #include "args.hxx"
 
@@ -15,9 +15,9 @@ namespace stockpile
 	{
 		PileDefinitionLoader loader;
 		PileCreator creator;
-		
+
 		const auto pileDef = loader.loadFromFile(definitionPath);
-		
+
 		return creator.createPile(*pileDef);
 	}
 }
@@ -29,7 +29,7 @@ int main(int argc, const char * argv[])
 	args::HelpFlag help(parser, "help", "Display this help menu", { 'h', "help"} );
 	args::ValueFlag<std::string> input(parser, "input", "The integer flag", {'i', "input" });
 	args::ValueFlag<std::string> output(parser, "output", "The integer flag", {'o', "output" });
-	
+
 	try
 	{
 		parser.ParseCLI(argc, argv);
@@ -44,14 +44,14 @@ int main(int argc, const char * argv[])
 	{
 		std::cerr << e.what() << std::endl;
 		std::cerr << parser;
-		
+
 		return 1;
 	}
-	
+
 	if (input && output)
 	{
 		const auto pile = stockpile::createPileFromDefinitionFile(input.Get());
-		
+
 		stockpile::PileWriter pileWriter;
 		pileWriter.writePile(pile, output.Get());
 	}
@@ -59,6 +59,6 @@ int main(int argc, const char * argv[])
 	{
 		std::cout << parser;
 	}
-	
+
 	return 0;
 }

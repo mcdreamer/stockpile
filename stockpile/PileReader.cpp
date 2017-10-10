@@ -1,7 +1,7 @@
-#include "PileReader.h"
+#include "pilereader.h"
 #include "pile.h"
-#include "PileHeader.h"
-#include "PileHasher.h"
+#include "pileheader.h"
+#include "pilehasher.h"
 
 #include "snappy.h"
 
@@ -20,45 +20,45 @@ namespace
 		chunkData(new ChunkData),
 		pos(0)
 		{}
-	
+
 		std::unique_ptr<PileData> pileData;
 		std::unique_ptr<ChunkData> chunkData;
 		int pos;
 		std::string chunkName;
 		std::string resourceName;
 	};
-	
+
 	//--------------------------------------------------------
 	PileHeader readHeader(std::ifstream& input)
 	{
 		PileHeader header;
-		
+
 		unsigned long numComponents = 0;
 		input >> numComponents;
-		
+
 		for (unsigned long nthComp = 0; nthComp < numComponents; ++nthComp)
 		{
 			PileHeader::Component comp;
-			
+
 			input >> comp.type;
 			input >> comp.length;
-			
+
 			header.components.push_back(comp);
 		}
-		
+
 		return header;
 	}
-	
+
 	//--------------------------------------------------------
 	std::string readData(const PileHeader::Component& pileComp, std::ifstream& input)
 	{
 		std::string data(pileComp.length, '\0');
-		
+
 		input.read(&data[0], pileComp.length);
-		
+
 		return data;
 	}
-	
+
 	//--------------------------------------------------------
 	void completeChunk(State& s)
 	{
@@ -66,7 +66,7 @@ namespace
 		{
 			s.pileData->chunks[ResourcePath(s.chunkName)].reset(new Chunk(s.chunkData));
 		}
-		
+
 		s.chunkData.reset(new ChunkData);
 		s.pos = 0;
 	}

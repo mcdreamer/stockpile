@@ -1,5 +1,5 @@
 #include "stockpile.h"
-#include "PileReader.h"
+#include "pilereader.h"
 
 namespace stockpile {
 
