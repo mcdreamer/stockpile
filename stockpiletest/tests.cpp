@@ -1,4 +1,4 @@
-#include "Tests.h"
+#include "tests.h"
 #include "gtest/gtest.h"
 
 #include "stockpile/include/stockpile.h"
