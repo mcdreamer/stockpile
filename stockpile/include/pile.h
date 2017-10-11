@@ -84,6 +84,7 @@ public:
 	using VisitChunkFunc = std::function<void (const ResourcePath&, const Chunk& chunk)>;
 
 	Pile(std::unique_ptr<PileData>& data);
+	Pile(Pile&& other);
 	~Pile();
 	
 	const Chunk* getChunk(const ResourcePath& chunkPath) const;

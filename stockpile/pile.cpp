@@ -50,6 +50,11 @@ Pile::Pile(std::unique_ptr<PileData>& data)
 {}
 
 //--------------------------------------------------------
+Pile::Pile(Pile&& other)
+: m_Data(other.m_Data.release())
+{}
+
+//--------------------------------------------------------
 Pile::~Pile()
 {}
 

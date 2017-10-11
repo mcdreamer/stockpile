@@ -2,7 +2,7 @@
 
 #include "stockpile.h"
 #include "pilewriter.h"
-#include "piledefinitionLoader.h"
+#include "piledefinitionloader.h"
 #include "piledefinition.h"
 #include "pilecreator.h"
 
