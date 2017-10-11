@@ -1,4 +1,4 @@
-stockpile.xcodeproj/xcuserdata
-stockpile.xcodeproj/project.xcworkspace
-stockpiletest.xcodeproj/project.xcworkspace
-stockpiletest.xcodeproj/xcuserdata
+stockpile/tests/build
+stockpile/lib/build
+stockpile/tool/build
+.DS_Store
