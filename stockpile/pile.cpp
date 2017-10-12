@@ -15,7 +15,7 @@ Chunk::~Chunk()
 ResourceData Chunk::getResource(const ResourcePath& path) const
 {
 	auto it = std::find_if(m_Data->resources.begin(), m_Data->resources.end(), [&](const auto& a) { return a.path == path; });
-	return it != m_Data->resources.end() ? std::string_view(&m_Data->data[it->startPos], it->length) : ResourceData();
+	return it != m_Data->resources.end() ? ResourceData(&m_Data->data[it->startPos], it->length) : ResourceData();
 }
 
 //--------------------------------------------------------
@@ -29,7 +29,7 @@ void Chunk::forEachResource(const VisitResourceFunc& func) const
 {
 	for (const auto& resource : m_Data->resources)
 	{
-		func(resource.path, std::string_view(&m_Data->data[resource.startPos], resource.length));
+		func(resource.path, ResourceData(&m_Data->data[resource.startPos], resource.length));
 	}
 }
 

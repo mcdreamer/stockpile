@@ -21,7 +21,7 @@ PileHeader PileHeaderCreator::createHeader(const Pile& pile) const
 
 			// Improve this
 			std::string compressedData;
-			snappy::Compress(&data.getData()[0], data.getData().size(), &compressedData);
+			snappy::Compress(data.getData(), data.getSize(), &compressedData);
 
 			header.components.push_back(PileHeader::Component { PileHeader::kResourceData, compressedData.length() });
 		});

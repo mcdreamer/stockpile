@@ -36,7 +36,7 @@ void PileWriter::writePile(const Pile& pile, const std::string& path) const
 		chunk.forEachResource([&](const ResourcePath& resourcePath, const ResourceData& data)
 		{
 			std::string resourceData;
-			snappy::Compress(&data.getData()[0], data.getData().size(), &resourceData);
+			snappy::Compress(data.getData(), data.getSize(), &resourceData);
 
 			output << resourcePath.toString() << resourceData;
 		});

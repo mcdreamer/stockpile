@@ -3,7 +3,6 @@
 #include "resourcepath.h"
 
 #include <string>
-#include <string_view>
 #include <map>
 #include <memory>
 #include <functional>
@@ -16,17 +15,20 @@ class ResourceData
 {
 public:
 	ResourceData()
+	: m_Data(nullptr), m_Size(0)
 	{}
-	
-	ResourceData(const std::string_view& data)
-	: m_Data(data)
+
+	ResourceData(const char* data, const int size)
+	: m_Data(data), m_Size(size)
 	{}
-	
-	const std::string_view& getData() const { return m_Data; }
-	bool empty() const { return m_Data.empty(); };
-	
+
+	const char* getData() const { return m_Data; }
+	int getSize() const { return m_Size; }
+	bool empty() const { return !m_Data; };
+
 private:
-	std::string_view m_Data;
+	const char* m_Data;
+	int m_Size;
 };
 
 //--------------------------------------------------------

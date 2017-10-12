@@ -37,7 +37,7 @@ std::string PileHasher::getHash(const Pile& pile) const
 			const auto resourcePathStr = resourcePath.toString();
 
 			hasher.process(resourcePathStr.begin(), resourcePathStr.end());
-			hasher.process(data.getData().begin(), data.getData().end());
+			hasher.process(data.getData(), data.getData() + data.getSize());
 		});
 	});
 
