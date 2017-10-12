@@ -18,6 +18,7 @@ set(SRCS
 	../pile.cpp
 	../pilecreator.cpp
 	../pilecreator.h
+	../piledata.h
 	../piledefinition.h
 	../piledefinitionloader.cpp
 	../piledefinitionloader.h

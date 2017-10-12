@@ -2,6 +2,7 @@
 #include "pile.h"
 #include "pileheader.h"
 #include "pilehasher.h"
+#include "piledata.h"
 
 #include "snappy.h"
 

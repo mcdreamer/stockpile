@@ -1,6 +1,7 @@
 #include "pilecreator.h"
 #include "piledefinition.h"
 #include "pile.h"
+#include "piledata.h"
 
 #include <map>
 #include <fstream>
