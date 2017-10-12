@@ -3,7 +3,7 @@ project(pile)
 
 set(CMAKE_BUILD_TYPE RELEASE)
 set(CMAKE_CXX_COMPILER "g++")
-set(CMAKE_CXX_FLAGS "-std=c++1z")
+set(CMAKE_CXX_FLAGS "-std=c++14")
 
 include_directories(
   "../"
