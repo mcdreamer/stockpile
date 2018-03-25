@@ -27,8 +27,8 @@ int main(int argc, const char * argv[])
 {
 	args::ArgumentParser parser("", "");
 	args::HelpFlag help(parser, "help", "Display this help menu", { 'h', "help"} );
-	args::ValueFlag<std::string> input(parser, "input", "The integer flag", {'i', "input" });
-	args::ValueFlag<std::string> output(parser, "output", "The integer flag", {'o', "output" });
+	args::ValueFlag<std::string> input(parser, "input", "Input pile definition file name", {'i', "input" });
+	args::ValueFlag<std::string> output(parser, "output", "Output pile file name", {'o', "output" });
 
 	try
 	{
