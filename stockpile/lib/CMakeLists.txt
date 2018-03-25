@@ -6,9 +6,10 @@ set(CMAKE_CXX_COMPILER "g++")
 set(CMAKE_CXX_FLAGS "-std=c++14")
 
 include_directories(
-  "../"
-  "../include"
-	"../../thirdparty/json/src"
+	"../"
+	"../include"
+	"../../thirdparty/json/include"
+	"../../thirdparty/json/include/nlohmann"
 	"../../thirdparty/PicoSHA2"
 	"../../thirdparty/snappy"
 	"../../thirdparty/snappy/build"
