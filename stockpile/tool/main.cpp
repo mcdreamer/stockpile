@@ -1,34 +1,16 @@
 #include <iostream>
 
 #include "include/stockpile.h"
-#include "lib/pilewriter.h"
-#include "lib/piledefinitionloader.h"
-#include "lib/piledefinition.h"
-#include "lib/pilecreator.h"
 
 #include "args.hxx"
-
-namespace stockpile
-{
-	//-----------------------------------------------------------------
-	Pile createPileFromDefinitionFile(const std::string& definitionPath)
-	{
-		PileDefinitionLoader loader;
-		PileCreator creator;
-
-		const auto pileDef = loader.loadFromFile(definitionPath);
-
-		return creator.createPile(*pileDef);
-	}
-}
 
 //--------------------------------------------------------
 int main(int argc, const char * argv[])
 {
 	args::ArgumentParser parser("", "");
 	args::HelpFlag help(parser, "help", "Display this help menu", { 'h', "help"} );
-	args::ValueFlag<std::string> input(parser, "input", "Input pile definition file name", {'i', "input" });
-	args::ValueFlag<std::string> output(parser, "output", "Output pile file name", {'o', "output" });
+	args::ValueFlag<std::string> definitionFile(parser, "input", "Input pile definition file name", {'i', "input" });
+	args::ValueFlag<std::string> outputPileFile(parser, "output", "Output pile file name", {'o', "output" });
 
 	try
 	{
@@ -48,12 +30,9 @@ int main(int argc, const char * argv[])
 		return 1;
 	}
 
-	if (input && output)
+	if (definitionFile && outputPileFile)
 	{
-		const auto pile = stockpile::createPileFromDefinitionFile(input.Get());
-
-		stockpile::PileWriter pileWriter;
-		pileWriter.writePile(pile, output.Get());
+		stockpile::createPileFromDefinitionFileAndWrite(definitionFile.Get(), outputPileFile.Get());
 	}
 	else
 	{
