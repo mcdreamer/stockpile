@@ -1,5 +1,5 @@
+#include "include/pile.h"
 #include "pilereader.h"
-#include "pile.h"
 #include "pileheader.h"
 #include "pilehasher.h"
 #include "piledata.h"

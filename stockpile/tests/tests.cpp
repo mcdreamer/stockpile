@@ -1,14 +1,14 @@
 #include "tests.h"
 #include "gtest/gtest.h"
 
-#include "stockpile.h"
+#include "include/stockpile.h"
 
-#include "piledefinition.h"
-#include "piledefinitionloader.h"
-#include "pilecreator.h"
-#include "pilewriter.h"
-#include "pilereader.h"
-#include "pilehasher.h"
+#include "lib/piledefinition.h"
+#include "lib/piledefinitionloader.h"
+#include "lib/pilecreator.h"
+#include "lib/pilewriter.h"
+#include "lib/pilereader.h"
+#include "lib/pilehasher.h"
 
 #include <memory>
 

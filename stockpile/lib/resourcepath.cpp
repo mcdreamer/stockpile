@@ -1,4 +1,4 @@
-#include "resourcepath.h"
+#include "include/resourcepath.h"
 
 namespace stockpile {
 	

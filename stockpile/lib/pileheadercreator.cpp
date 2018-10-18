@@ -1,5 +1,5 @@
+#include "include/pile.h"
 #include "pileheadercreator.h"
-#include "pile.h"
 #include "pileheader.h"
 
 #include "snappy.h"

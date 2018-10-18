@@ -1,10 +1,10 @@
 #include <iostream>
 
-#include "stockpile.h"
-#include "pilewriter.h"
-#include "piledefinitionloader.h"
-#include "piledefinition.h"
-#include "pilecreator.h"
+#include "include/stockpile.h"
+#include "lib/pilewriter.h"
+#include "lib/piledefinitionloader.h"
+#include "lib/piledefinition.h"
+#include "lib/pilecreator.h"
 
 #include "args.hxx"
 

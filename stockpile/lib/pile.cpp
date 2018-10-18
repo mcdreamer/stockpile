@@ -1,4 +1,4 @@
-#include "pile.h"
+#include "include/pile.h"
 #include "piledata.h"
 
 namespace stockpile {
