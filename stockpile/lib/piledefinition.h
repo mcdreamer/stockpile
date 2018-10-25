@@ -30,16 +30,20 @@ class ChunkDefinition
 {
 public:
 	ChunkDefinition(const std::string& chunkName,
+					const std::string& basePath,
 					const std::vector<ResourceDefinition>& resourceDefinitions)
 	: m_ChunkName(chunkName),
+	m_BasePath(basePath),
 	m_ResourceDefinitions(resourceDefinitions)
 	{}
 	
 	const std::string& getChunkName() const { return m_ChunkName; }
+	const std::string& getBasePath() const { return m_BasePath; }
 	const std::vector<ResourceDefinition>& getResourcesDefinitions() const { return m_ResourceDefinitions; }
 	
 private:
 	std::string m_ChunkName;
+	std::string m_BasePath;
 	std::vector<ResourceDefinition>	m_ResourceDefinitions;
 };
 

@@ -10,7 +10,7 @@
 namespace stockpile {
 
 //--------------------------------------------------------
-Pile PileCreator::createPile(const PileDefinition& pileDef) const
+Pile PileCreator::createPile(const PileDefinition& pileDef, const std::string& resourceRoot) const
 {
 	std::unique_ptr<PileData> pileData(new PileData);
 
@@ -23,7 +23,14 @@ Pile PileCreator::createPile(const PileDefinition& pileDef) const
 
 		for (const auto& resourceDef : chunkDef.getResourcesDefinitions())
 		{
-			std::ifstream input(resourceDef.getFilename(), std::ios::binary | std::ios::ate);
+			std::string path = resourceRoot;
+			if (!chunkDef.getBasePath().empty())
+			{
+				path += "/" + chunkDef.getBasePath();
+			}
+			path += "/" + resourceDef.getFilename();
+
+			std::ifstream input(path, std::ios::binary | std::ios::ate);
 			if (input.fail())
 			{
 				throw new std::exception();

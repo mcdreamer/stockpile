@@ -38,7 +38,7 @@ namespace
 			resourceDefs.push_back(readResource(resourceDefJson));
 		}
 
-		return ChunkDefinition(chunkDefJson["name"], resourceDefs);
+		return ChunkDefinition(chunkDefJson["name"], getValueForKey(chunkDefJson, "basepath"), resourceDefs);
 	}
 
 	//--------------------------------------------------------

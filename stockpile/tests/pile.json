@@ -3,10 +3,19 @@
 	[
 		{
 			"name": "testchunk",
+			"basepath": "",
 			"resources":
 			[
 				{ "file": "test.txt", "path": "testdata" },
 				{ "file": "test1.txt" }
+			]
+		},
+		{
+			"name": "anothertestchunk",
+			"basepath": "moredata",
+			"resources":
+			[
+				{ "file": "test3.txt" }
 			]
 		}
 	]

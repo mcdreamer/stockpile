@@ -16,20 +16,20 @@ std::unique_ptr<Pile> loadPile(const std::string& pilePath)
 }
 
 //-----------------------------------------------------------------
-Pile createPileFromDefinitionFile(const std::string& definitionPath)
+Pile createPileFromDefinitionFile(const std::string& definitionPath, const std::string& resourceRoot)
 {
 	PileDefinitionLoader loader;
 	PileCreator creator;
 
 	const auto pileDef = loader.loadFromFile(definitionPath);
 
-	return creator.createPile(*pileDef);
+	return creator.createPile(*pileDef, resourceRoot);
 }
 
 //-----------------------------------------------------------------
-void createPileFromDefinitionFileAndWrite(const std::string& definitionPath, const std::string& outputPath)
+void createPileFromDefinitionFileAndWrite(const std::string& definitionPath, const std::string& resourceRoot, const std::string& outputPath)
 {
-	const auto pile = stockpile::createPileFromDefinitionFile(definitionPath);
+	const auto pile = stockpile::createPileFromDefinitionFile(definitionPath, resourceRoot);
 
 	stockpile::PileWriter pileWriter;
 	pileWriter.writePile(pile, outputPath);

@@ -4,6 +4,8 @@
 
 #include "args.hxx"
 
+#include <boost/filesystem.hpp>
+
 //--------------------------------------------------------
 int main(int argc, const char * argv[])
 {
@@ -11,6 +13,7 @@ int main(int argc, const char * argv[])
 	args::HelpFlag help(parser, "help", "Display this help menu", { 'h', "help"} );
 	args::ValueFlag<std::string> definitionFile(parser, "input", "Input pile definition file name", {'i', "input" });
 	args::ValueFlag<std::string> outputPileFile(parser, "output", "Output pile file name", {'o', "output" });
+	args::ValueFlag<std::string> root(parser, "root", "The resource root (current directory if not specified)", { 'r', "root" });
 
 	try
 	{
@@ -32,7 +35,13 @@ int main(int argc, const char * argv[])
 
 	if (definitionFile && outputPileFile)
 	{
-		stockpile::createPileFromDefinitionFileAndWrite(definitionFile.Get(), outputPileFile.Get());
+		std::string rootToUse = boost::filesystem::current_path().c_str();
+		if (root && !root.Get().empty())
+		{
+			rootToUse = root.Get();
+		}
+
+		stockpile::createPileFromDefinitionFileAndWrite(definitionFile.Get(), rootToUse, outputPileFile.Get());
 	}
 	else
 	{
