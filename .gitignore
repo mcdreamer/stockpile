@@ -2,3 +2,5 @@ stockpile/tests/build
 stockpile/lib/build
 stockpile/tool/build
 .DS_Store
+.vscode
+thirdparty/boost
