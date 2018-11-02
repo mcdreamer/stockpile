@@ -8,8 +8,8 @@
 
 namespace stockpile {
 
-class ChunkData;
-class PileData;
+struct ChunkData;
+struct PileData;
 
 //--------------------------------------------------------
 class ResourceData
