@@ -4,4 +4,6 @@ stockpile is a resource management library written in C++. It takes a structure 
 
 Currently this is really just a sketch even though it has working code with unit tests exercising it. Lots of tidy up and improved client side functionality is still required.
 
+You can use stockpile_cmake.txt to provide the build_pile function in CMakeLists.txt. This function adds a custom command which runs stockpile on an input and produces a pile.
+
 Building now requires boost. A link to a boost directory should be created in thirdparty.
