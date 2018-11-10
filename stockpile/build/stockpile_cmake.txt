@@ -1,5 +1,4 @@
 cmake_minimum_required(VERSION 3.0)
-project(stockpile_resources)
 
 function(build_pile STOCKPILEBUILDDIR PILEDEFINITION PILEROOT PILEOUTPUT)
 
