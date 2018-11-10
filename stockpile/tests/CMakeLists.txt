@@ -9,7 +9,6 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_subdirectory("../lib" "lib")
-add_subdirectory("../../thirdparty/snappy" "thirdparty/snappy/build")
 add_subdirectory("../../thirdparty/googletest/googletest" "thirdparty/googletest")
 
 set(BOOST_ROOT $ENV{BOOST_DIR})

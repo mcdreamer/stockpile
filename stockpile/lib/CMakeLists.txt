@@ -1,9 +1,13 @@
 cmake_minimum_required(VERSION 3.0)
 project(pile)
 
+set(SNAPPY_BUILD_TESTS OFF CACHE BOOL "")
+
 set(CMAKE_BUILD_TYPE RELEASE)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+add_subdirectory("../../thirdparty/snappy" "snappy")
 
 include_directories(
 	"../"
@@ -11,8 +15,10 @@ include_directories(
 	"../../thirdparty/json/include/nlohmann"
 	"../../thirdparty/PicoSHA2"
 	"../../thirdparty/snappy"
-	"../../thirdparty/snappy/build"
+	"${PROJECT_BINARY_DIR}/snappy"
 )
+
+message("${PROJECT_BINARY_DIR}/snappy")
 
 set(SRCS
 	pile.cpp

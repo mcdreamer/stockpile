@@ -8,7 +8,6 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_subdirectory("../lib" "lib")
-add_subdirectory("../../thirdparty/snappy" "thirdparty/snappy/build")
 
 set(BOOST_ROOT $ENV{BOOST_DIR})
 set(Boost_USE_STATIC_LIBS ON)
