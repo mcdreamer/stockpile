@@ -20,7 +20,7 @@ void PileWriter::writePile(const Pile& pile, const std::string& path) const
 	const auto header = headerCreator.createHeader(pile);
 
 	std::ofstream output;
-	output.open(path);
+	output.open(path, std::ios::binary);
 
 	output << header.components.size();
 

@@ -77,7 +77,7 @@ namespace
 std::unique_ptr<Pile> PileReader::readPile(const std::string& path) const
 {
 	std::ifstream input;
-	input.open(path);
+	input.open(path, std::ifstream::binary);
 
 	const auto header = readHeader(input);
 
