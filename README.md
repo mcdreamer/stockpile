@@ -6,4 +6,4 @@ Currently this is really just a sketch even though it has working code with unit
 
 You can use stockpile_cmake.txt to provide the build_pile function in CMakeLists.txt. This function adds a custom command which runs stockpile on an input and produces a pile.
 
-Building now requires boost. A link to a boost directory should be created in thirdparty.
+Building now requires boost. Set BOOST_DIR to the location of a boost directory.

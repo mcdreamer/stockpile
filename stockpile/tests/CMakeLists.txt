@@ -9,13 +9,13 @@ add_subdirectory("../../thirdparty/snappy" "thirdparty/snappy/build")
 add_subdirectory("../../thirdparty/googletest/googletest" "thirdparty/googletest")
 
 set(CMAKE_BUILD_TYPE RELEASE)
-set(CMAKE_CXX_COMPILER "g++")
 set(CMAKE_CXX_FLAGS "-std=c++14")
+set(BOOST_DIR $ENV{BOOST_DIR})
 
 include_directories(
 	"../"
 	"../../thirdparty/googletest/googletest/include"
-	"../../thirdparty/boost"
+	${BOOST_DIR}
 )
 
 set(SRCS
