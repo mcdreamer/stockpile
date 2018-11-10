@@ -1,6 +1,8 @@
 #include "include/pile.h"
 #include "piledata.h"
 
+#include <algorithm>
+
 namespace stockpile {
 
 //--------------------------------------------------------

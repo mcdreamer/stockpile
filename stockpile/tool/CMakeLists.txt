@@ -3,19 +3,22 @@ project(stockpile)
 
 set(SNAPPY_BUILD_TESTS OFF CACHE BOOL "")
 
+set(CMAKE_BUILD_TYPE RELEASE)
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 add_subdirectory("../lib" "lib")
 add_subdirectory("../../thirdparty/snappy" "thirdparty/snappy/build")
-add_subdirectory("../boostlib" "boostlib")
 
-set(CMAKE_BUILD_TYPE RELEASE)
-set(CMAKE_CXX_FLAGS "-std=c++14")
-
-set(BOOST_DIR $ENV{BOOST_DIR})
+set(BOOST_ROOT $ENV{BOOST_DIR})
+set(Boost_USE_STATIC_LIBS ON)
+set(Boost_USE_MULTITHREADED ON)
+find_package(Boost COMPONENTS filesystem REQUIRED)
 
 include_directories(
   "../"
   "../../thirdparty/args"
-  ${BOOST_DIR}
+  ${Boost_INCLUDE_DIRS}
 )
 
 set(SRCS
@@ -24,4 +27,4 @@ set(SRCS
 
 add_executable(stockpile "${SRCS}")
 
-target_link_libraries(stockpile pile snappy boostlib)
+target_link_libraries(stockpile pile snappy ${Boost_LIBRARIES})

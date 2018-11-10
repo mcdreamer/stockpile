@@ -2,7 +2,8 @@ cmake_minimum_required(VERSION 3.0)
 project(pile)
 
 set(CMAKE_BUILD_TYPE RELEASE)
-set(CMAKE_CXX_FLAGS "-std=c++14")
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include_directories(
 	"../"

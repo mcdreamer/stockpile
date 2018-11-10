@@ -51,7 +51,7 @@ TEST(PileCreator,testCreatePile)
 	ASSERT_TRUE(pileDef.get());
 	
 	stockpile::PileCreator creator;
-	const auto pile = creator.createPile(*pileDef, boost::filesystem::current_path().c_str());
+	const auto pile = creator.createPile(*pileDef, boost::filesystem::current_path().string());
 	
 	ASSERT_EQ((size_t)2, pile.chunkCount());
 	
@@ -80,7 +80,7 @@ TEST(PileReader,testWritePile)
 	ASSERT_TRUE(pileDef.get());
 	
 	stockpile::PileCreator creator;
-	const auto pile = creator.createPile(*pileDef, boost::filesystem::current_path().c_str());
+	const auto pile = creator.createPile(*pileDef, boost::filesystem::current_path().string());
 
 	stockpile::PileWriter writer;
 	writer.writePile(pile, "test.pile");

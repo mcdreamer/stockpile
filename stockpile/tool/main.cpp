@@ -35,7 +35,7 @@ int main(int argc, const char * argv[])
 
 	if (definitionFile && outputPileFile)
 	{
-		std::string rootToUse = boost::filesystem::current_path().c_str();
+		std::string rootToUse = boost::filesystem::current_path().string();
 		if (root && !root.Get().empty())
 		{
 			rootToUse = root.Get();
