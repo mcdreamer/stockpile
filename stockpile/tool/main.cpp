@@ -1,10 +1,9 @@
 #include <iostream>
+#include <filesystem>
 
 #include "include/stockpile.h"
 
 #include "args.hxx"
-
-#include <boost/filesystem.hpp>
 
 //--------------------------------------------------------
 int main(int argc, const char * argv[])
@@ -35,7 +34,7 @@ int main(int argc, const char * argv[])
 
 	if (definitionFile && outputPileFile)
 	{
-		std::string rootToUse = boost::filesystem::current_path().string();
+		std::string rootToUse = std::filesystem::current_path().string();
 		if (root && !root.Get().empty())
 		{
 			rootToUse = root.Get();
